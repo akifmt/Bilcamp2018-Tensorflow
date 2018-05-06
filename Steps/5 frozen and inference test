@@ -1,0 +1,14 @@
+
+source ~/tensorflow/bin/activate
+
+# From tensorflow/models/research/
+protoc object_detection/protos/*.proto --python_out=.
+
+# From tensorflow/models/research/
+export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+
+
+--EXPORT FROZEN---
+python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/faster_rcnn_inception_v2_pets.config --trained_checkpoint_prefix training/model.ckpt-2681 --output_directory frozenFace2681
+
+

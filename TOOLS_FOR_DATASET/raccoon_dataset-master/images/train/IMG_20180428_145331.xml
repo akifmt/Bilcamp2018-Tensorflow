@@ -1,0 +1,26 @@
+<annotation>
+	<folder>train</folder>
+	<filename>IMG_20180428_145331.jpg</filename>
+	<path>/home/mkf/Desktop/images/train/IMG_20180428_145331.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>3120</width>
+		<height>4160</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>powerbank</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1298</xmin>
+			<ymin>1015</ymin>
+			<xmax>1880</xmax>
+			<ymax>2644</ymax>
+		</bndbox>
+	</object>
+</annotation>

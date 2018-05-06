@@ -1,0 +1,34 @@
+
+source ~/tensorflow/bin/activate
+
+# copy folders::
+ssd_mobilenet_v1
+training
+
+# copy tfrecords to data folder (models/research/object_detection/data)
+train.record
+test.record
+
+# From tensorflow/models/research/
+protoc object_detection/protos/*.proto --python_out=.
+
+# From tensorflow/models/research/
+export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+
+
+# Start Training
+source ~/tensorflow/bin/activate
+python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/ssd_mobilenet_v1.config
+
+python train.py --logtostderr --train_dir=training2/ --pipeline_config_path=training2/faster_rcnn_inception_v2_coco.config
+
+python train.py --logtostderr --train_dir=training2/ --pipeline_config_path=training2/pipelineOLDfrommodelpath.config
+
+
+# TF BOARD
+From models/object_detection, via terminal, you start TensorBoard with:
+tensorboard --logdir='training'
+tensorboard --logdir='training' --host=0.0.0.0 --port=8080 
+#visit in your browser
+This runs on 127.0.0.1:6006 
+http://ec2-34-241-238-236.eu-west-1.compute.amazonaws.com:8080

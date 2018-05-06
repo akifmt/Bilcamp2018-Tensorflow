@@ -1,0 +1,64 @@
+##############
+### INSTALLING TENSORFLOW ON Virtualenv
+##############
+## Installing with Virtualenv:
+
+# Install pip and Virtualenv by issuing one of the following commands: # for Python 3.n
+sudo apt-get install python3-pip python3-dev python-virtualenv
+
+# Create a Virtualenv environment by issuing one of the following commands: # for Python 3.n
+# Example:: virtualenv --system-site-packages -p python3 targetDirectory
+virtualenv --system-site-packages -p python3 tensorflow
+
+# Activate the Virtualenv environment by issuing one of the following commands: # bash, sh, ksh, or zsh
+source ~/tensorflow/bin/activate
+
+# Ensure pip ≥8.1 is installed:
+easy_install -U pip
+
+# Issue one of the following commands to install TensorFlow in the active Virtualenv environment:
+sudo pip3 install --upgrade tensorflow
+
+# validate the installation
+# bash, sh, ksh, or zsh
+source ~/tensorflow/bin/activate
+# deactivate # for exit from virenv
+
+# Python
+import tensorflow as tf
+hello = tf.constant('Hello, TensorFlow!')
+sess = tf.Session()
+print(sess.run(hello))
+
+##############
+### INSTALLING object detection on Virtualenv
+##############
+
+#The remaining libraries can be installed on Ubuntu 16.04 using via apt-get:
+
+source ~/tensorflow/bin/activate
+sudo apt-get install protobuf-compiler python-pil python-lxml python-tk
+sudo apt-get install python3-tk
+sudo pip3 install Cython
+sudo pip3 install jupyter
+sudo pip3 install matplotlib
+#Alternatively, users can install dependencies using pip:
+sudo pip3 install Cython
+sudo pip3 install pillow
+sudo pip3 install lxml
+sudo pip3 install jupyter
+sudo pip3 install matplotlib
+
+# From tensorflow/models/research/
+protoc object_detection/protos/*.proto --python_out=.
+
+# From tensorflow/models/research/
+export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+
+# TEST INSTALLATION
+# You can test that you have correctly installed the Tensorflow Object Detection API by running the following command:
+source ~/tensorflow/bin/activate
+python object_detection/builders/model_builder_test.py
+
+
+
